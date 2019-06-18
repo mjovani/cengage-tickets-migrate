@@ -17,7 +17,7 @@ const getCGIFromOldPContentId = (id) => {
         if (content.options.cgi) {
             return content.options.cgi
         } else {
-            return getCGIFromPContentId(content.parent_id)
+            return getCGIFromOldPContentId(content.parent_id)
         }
     }
 
@@ -42,7 +42,7 @@ const getNewTickets = (oldTickets) => {
                 newContentId = getNewPContentIdFromCGI(ref)
 
                 if (!newContentId) {
-                    notFoundContents.push(ref)
+                    notFoundContents.push(ticket.content_id)
                 }
             } else {
                 notFoundRefs.push(ticket.content_id)
